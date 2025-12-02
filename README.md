@@ -12,7 +12,3 @@
 - Vesion Control: git
 - Central repository: GitHub
 - CI/CD: GitHub Actions
-
-<!-- ## Architecture
-
-##  -->
