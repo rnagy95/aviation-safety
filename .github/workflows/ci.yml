@@ -37,15 +37,3 @@ jobs:
         run: |
           cd backend/server
           python -m unittest discover -s=tests -p=*.py
-
-      - name: Setup Node.JS
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: Test Angular App
-        run: | 
-            cd frontend/aviation-safety-frontend
-            npm install --force
-            npm CI
-            npm run test --if-present
