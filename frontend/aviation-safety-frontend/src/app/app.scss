@@ -1,0 +1,18 @@
+.container {
+    width: 100%;
+    min-height: 100vh;
+
+    .title{
+        background-color: darkblue;
+        color: white;
+        font-weight: bold;
+        padding: 10px 10px 15px 15px;
+        margin: 0 0 30px 0px;
+    }
+
+    .year-picker {
+        width: 250px;
+        height: 100%;
+        margin: auto;
+    }
+}

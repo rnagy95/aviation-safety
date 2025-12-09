@@ -30,9 +30,9 @@ class InMemoryDatabase:
                 & (self.data["Event.Date"] < end_date)
             ]
             .sort_values(by="Event.Id", ascending=True)
-            .iloc[(page - 1) * page_size : page * page_size]
         )
-        return result
+        count = len(result)
+        return (result.iloc[(page - 1) * page_size : page * page_size], count)
 
     def _load_data(self, path: str) -> pd.DataFrame:
         """Load data from a CSV file into the in-memory database."""
