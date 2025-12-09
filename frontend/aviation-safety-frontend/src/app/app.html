@@ -1,0 +1,11 @@
+<div class="container">
+    <H1 class="title">Aviation Safety Coding Challenge</H1>
+    <form class="year-picker">
+        <mat-form-field appearance="outline">
+            <mat-label>Year</mat-label>
+            <input matInput placeholder="E.g.: 1995" type="number" [(ngModel)]="year" name="year" (change)="onQueryChanged()">
+        </mat-form-field>
+    </form>
+    <app-map [markers]="markers()"></app-map>
+    <app-data-table [data]="data" [length]="length()" [(page)]="page" [(page_size)]="page_size" (pageChange)="onQueryChanged()" (page_sizeChange)="onQueryChanged()"></app-data-table>
+</div>
