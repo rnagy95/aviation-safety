@@ -35,7 +35,7 @@ jobs:
 
       - name: Test Python App
         run: |
-          cd server
+          cd backend/server
           python -m unittest discover -s=tests -p=*.py
 
       - name: Setup Node.JS
@@ -45,6 +45,6 @@ jobs:
 
       - name: Test Angular App
         run: | 
-            cd ./frontend/aviation-safety-frontend
+            cd frontend/aviation-safety-frontend
             npm install --force
             npm run test --if-present
