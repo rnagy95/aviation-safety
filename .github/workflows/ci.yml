@@ -47,4 +47,5 @@ jobs:
         run: | 
             cd frontend/aviation-safety-frontend
             npm install --force
+            npm CI
             npm run test --if-present
