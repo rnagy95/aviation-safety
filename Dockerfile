@@ -13,7 +13,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy backend code
 COPY backend/server/ ./
 # Copy built Angular files into backend
-WORKDIR //backend/www/
+WORKDIR /backend/www/
 COPY --from=frontend-build /backend/www/ .
 # Expose port
 EXPOSE 8000
