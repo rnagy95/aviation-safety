@@ -17,5 +17,7 @@ class TestInMemoryDatabase(unittest.TestCase):
 
     def test_query_data(self):
         expected_output = self.db.data.iloc[0:2].sort_values(by="Event.Id", ascending=True)
-        output = self.db.query_data(year=2019, page=1, page_size=50)
+        expected_count = 2
+        (output, count) = self.db.query_data(year=2019, page=1, page_size=50)
+        self.assertEqual(count, expected_count)
         pd.testing.assert_frame_equal(output, expected_output, "Query output does not match expected output.")
