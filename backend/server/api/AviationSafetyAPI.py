@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from services.InMemoryDatabase import InMemoryDatabase
 
 
@@ -10,11 +11,12 @@ class AviationSafetyAPI:
         self.add_routes(self.app)
         self.app.add_middleware(
             CORSMiddleware,
-            allow_origins=["https://localhost:4200", "http://localhost:4200"],
+            allow_origins=["https://localhost:4200", "http://localhost:4200"], #Enable testing with 'ng serve'
             allow_credentials=True,
             allow_methods=["*"],
             allow_headers=["*"],
         )
+        self.app.mount("/", StaticFiles(directory="../www/browser", html=True), name="frontend")
 
     def add_routes(self, app: FastAPI):
         """Add API routes to the FastAPI app."""
@@ -27,7 +29,7 @@ class AviationSafetyAPI:
             (data, count) = self.db.query_data(year=year, page=page, page_size=page_size)
             return {
                 "status": "OK",
-                "lenght": count,
+                "length": count,
                 "data": data.fillna("").to_dict(orient="records"),
             }
 

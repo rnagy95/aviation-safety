@@ -1,0 +1,50 @@
+name: Run unit tests
+
+on:
+  pull_request:
+    branches: ["develop"]
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "ci-cd"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.14"
+
+      - name: Install Python Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          cd backend
+          pip install -r requirements.txt
+
+      - name: Test Python App
+        run: |
+          cd server
+          python -m unittest discover -s=tests -p=*.py
+
+      - name: Setup Node.JS
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Test Angular App
+        run: | 
+            cd ./frontend/aviation-safety-frontend
+            npm install --force
+            npm run test --if-present

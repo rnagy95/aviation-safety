@@ -9,7 +9,7 @@ import { CdkTableDataSourceInput } from '@angular/cdk/table';
 
 interface AviationSafetyResult {
   status: string,
-  lenght: number,
+  length: number,
   data: unknown
 }
 export interface MapMarkerData {
@@ -46,7 +46,7 @@ export class App implements OnInit {
   private _getData(): void {
     this.http.get("api/aviation-safety/query", { "year": this.year, "page": this.page + 1, "page_size": this.page_size }).subscribe((response) => {
       const result = response as AviationSafetyResult;
-      this.length.set(result.lenght)
+      this.length.set(result.length)
       this.data = result.data as CdkTableDataSourceInput<any>;
       const markers = (this.data as Array<any>).filter(
         (item) => !!item.Location || (!!item.Latitude && !!item.Longitude)
