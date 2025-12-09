@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, signal, Signal, SimpleChanges, WritableSignal } from '@angular/core';
+import { Component, OnInit, signal, WritableSignal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MaterialModule } from './material.module';
 import { Map } from './map/map';
@@ -12,6 +12,7 @@ interface AviationSafetyResult {
   length: number,
   data: unknown
 }
+
 export interface MapMarkerData {
   id: string,
   position: google.maps.LatLngLiteral,

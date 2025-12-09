@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, WritableSignal, ViewChild, signal, OnChanges, SimpleChanges } from '@angular/core';
+import { AfterViewInit, Component, Input, ViewChild, OnChanges, SimpleChanges } from '@angular/core';
 import { GoogleMapsModule, GoogleMap, MapGeocoder } from '@angular/google-maps';
 import { MarkerClusterer } from '@googlemaps/markerclusterer';
 import { MapMarkerData } from '../app';
@@ -11,11 +11,7 @@ import { forkJoin, of, map } from 'rxjs';
   styleUrl: './map.scss'
 })
 export class Map implements AfterViewInit, OnChanges {
-
-
-  constructor(private geocoder: MapGeocoder) {
-
-  }
+  constructor(private geocoder: MapGeocoder) { }
 
   private _clusterer: MarkerClusterer | null = null;
 
